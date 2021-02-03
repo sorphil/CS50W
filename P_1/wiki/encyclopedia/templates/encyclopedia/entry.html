@@ -1,0 +1,12 @@
+
+{% extends "encyclopedia/layout.html" %}
+{% load markdownify %}
+{% block title %} {{title|lower|capfirst}} {% endblock %}
+
+
+{% block body %}
+<i style = "text-align:right;"> <a href = {% url 'encyclopedia:edit_page' title%}> Edit page </a></i>
+{{ text|markdownify }}
+
+
+{% endblock %}
