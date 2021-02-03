@@ -26,8 +26,7 @@ def entry(request, title):
     else:
         context["text"] = result
         context["title"] = title
-        return render(request, 'encyclopedia/entry.html', context)
-
+        return render(request, 'encyclopedia/entry.html', context) #using a package 'markdownify' to convert md to HTML format, https://pypi.org/project/markdownify/
 
 
 
