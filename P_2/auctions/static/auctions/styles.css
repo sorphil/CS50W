@@ -1,0 +1,64 @@
+body {
+    padding:15px;
+    margin-right:auto;
+    margin-left:auto;  
+}
+#navbar
+{
+    border-bottom: 1px solid rgb(218, 218, 218);
+    padding-bottom:10px
+}
+a
+{
+    color:black
+}
+a:hover
+{
+    text-decoration: underline;
+    color:rgb(93, 91, 91);
+}
+#xs-space
+{
+    padding:20px;
+}
+#sm-space
+{
+    padding:30px;
+    
+}
+#md-space
+{
+    padding: 50px;
+}
+
+
+
+
+#listing-row
+{
+    border: 1px solid rgb(218, 218, 218);
+    padding:20px;
+}
+#listing-image
+{
+    text-align:center;
+    padding-top: 20px;
+    padding-bottom:20px
+}
+#listing-text
+{
+    padding-top: 30px;
+    
+}
+
+
+
+
+
+#top-buttons
+{
+    padding:3px;
+    height:auto;
+    font-size: 11px;
+    width:auto;
+}

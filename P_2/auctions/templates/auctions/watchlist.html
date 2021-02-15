@@ -1,0 +1,47 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+  {% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class=>
+     <div {% if message.tags == 'error' %} class="alert alert-danger" {% else %} class="alert alert-primary" {% endif %} role="alert">{{ message }}</div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+    {% if watchlist %}
+    <h2><b>Watchlist</b></h2><br>
+    {% for listing in watchlist %}
+            <div class = "container-fluid" id = "listing-row">
+                <div class = "row">
+                    <div class="col-sm" id = "listing-image">
+                        {% if listing.image %}
+                            <a href = "{% url "listing" listing.id %}">
+                                <img src = "{{listing.image.url}}" style = "height:200px; width:auto;">
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-7" id = "listing-text">
+                        <h3><b><a href = "{% url "listing" listing.id %}"> {{listing.title}} </a></b></h3>
+                        <p><b>Starting bid: </b>${{listing.start_bid}}</p>
+                        <p>{{listing.description}} <br>
+                        <i>Created: {{listing.pub_date}}</i></p>
+                        <form method = "post" action = "{% url 'watchlist'%}">
+                        {% csrf_token %}
+                        <button type = "submit" name = "watchlist_delete" class = "btn btn-danger btn-sm" id = "top-buttons" value = "{{listing.id}}">Remove from watchlist</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+            <br>
+            
+    {% endfor %}
+    </ul>
+    {% else %}
+    <h3><b> Watchlist empty </b> </h3>
+    {% endif %}
+{% endblock %}
