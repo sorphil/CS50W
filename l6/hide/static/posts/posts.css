@@ -1,0 +1,46 @@
+
+@keyframes hide
+{
+    0%
+    {
+        opacity: 1;
+        height:100%;
+        line-height:100%;
+        padding:50px;
+        margin:20px;
+    }
+    70%
+    {
+        opacity:0;
+        padding:50px;
+        margin:20px;
+    }
+    100%
+    {
+        opacity:0;
+        height:0%;
+        line-height:0%;
+        padding:0px;
+        margin:0px;
+    }
+}
+
+
+.post
+{
+    padding:50px;
+    background-color: aquamarine;
+    margin:20px;
+    margin-left: 0;
+    margin-right:0;
+    animation-name: hide;
+    animation-duration:0.75s;
+    animation-direction: normal;
+    animation-play-state:paused;
+
+}
+button
+{
+    float:right;
+}
+

@@ -1,0 +1,24 @@
+h1
+{
+    position: relative;
+    animation-name: move;
+    animation-duration:10s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move
+{
+    0%
+    {
+        left: 0%;
+    }
+    50%
+    {
+        left: 90%;
+    }
+    100%
+    {
+        left:0%;
+    }
+}

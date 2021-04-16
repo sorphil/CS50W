@@ -1,0 +1,24 @@
+textarea {
+    min-height: 400px;
+}
+
+.email
+{
+    border: 2px solid;
+    border-collapse: collapse;
+    padding: 10px;
+}
+.email_clickable:hover
+{
+    cursor: pointer;
+}
+
+.read
+{
+    font-weight: lighter;
+    text-align: right;
+}
+.markread
+{
+    text-align: right;
+}

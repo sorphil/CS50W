@@ -5,7 +5,6 @@
    {% if messages %}
 <div class="messages">
     {% for message in messages %}
-    <div class=>
      <div {% if message.tags == 'error' %} class="alert alert-danger" {% else %} class="alert alert-primary" {% endif %} role="alert">{{ message }}</div>
     {% endfor %}
 </ul>
@@ -24,6 +23,10 @@
     {% if owner and active %}
     <!--If the current user is the owner and the listing is active, show the close auction button-->
     <button type = "submit" name = "end_submit" class = "btn btn-danger btn-sm" id = "top-buttons">Close auction</button>
+
+    {% elif owner and not active %}
+    <!--If the current user is the owner and the listing is inactive, show the open auction button-->
+    <button type = "submit" name = "listing_open" class = "btn btn-primary btn-sm" id = "top-buttons">Open auction</button>
     {% endif %}
 </form>
 {% elif user.is_authenticated and watchlist_flag is True %}

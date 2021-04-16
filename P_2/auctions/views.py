@@ -81,7 +81,7 @@ def create(request):
 
         form = AuctionForm(request.POST, request.FILES)
         if form.is_valid():
-            listing = form.save(commit=False)
+            listing = form.save(commit=False) #Saving the form (ie it's data obtained from the user as a listing object)
             listing.user = request.user
             listing.active = True
             listing.image = form.cleaned_data.get("image")
@@ -197,9 +197,16 @@ def listing(request, id):
                 messages.success(request, 'Added to watchlist')
                 return HttpResponseRedirect(reverse('listing', kwargs={'id': id}))
         
+        elif 'listing_open' in request.POST:
+            listing.active = True;
+            listing.save();
+            messages.success(request,  f'Auction for {listing.title} successfully opened')
+            return HttpResponseRedirect(reverse('listing', kwargs ={'id':id}))
+        
         elif 'end_submit' in request.POST:
             listing.active = False
             listing.save()
+            messages.success(request,  f'Auction for {listing.title} successfully closed')
             return HttpResponseRedirect(reverse('listing', kwargs={'id': id}))
 
 
@@ -234,3 +241,31 @@ def category(request, category):
     listings = AuctionListing.objects.filter(active=True, category = category)
     context = {"listings":listings}
     return render(request, "auctions/index.html", context)
+
+
+@login_required(login_url='/login')
+def user_listings_view(request):
+    if request.method == "GET":
+        #Getting all the items owned/started by the user
+        user_listings = AuctionListing.objects.filter(user = request.user.id)
+        print(user_listings)
+        context = {
+            "user_listings":user_listings
+        }
+        return render(request, 'auctions/user_listings.html', context)
+
+    elif request.method == "POST":
+        if 'listing_delete' in request.POST:
+            listing= AuctionListing.objects.get(id=request.POST["listing_delete"])
+            #closing the auction
+            listing.active = False;
+            listing.save();
+            messages.success(request,  f'Auction for {listing.title} successfully closed')
+            return HttpResponseRedirect(reverse('user_listings'))
+        else:
+            listing= AuctionListing.objects.get(id=request.POST["listing_open"])
+            #opening the auction
+            listing.active = True;
+            listing.save();
+            messages.success(request,  f'Auction for {listing.title} successfully opened')
+            return HttpResponseRedirect(reverse('user_listings'))

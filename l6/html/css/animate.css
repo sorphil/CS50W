@@ -1,0 +1,16 @@
+h1
+{
+    animation-name: grow;
+    animation-duration:2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes grow
+{
+    from{
+        font-size:20px;
+    }
+    to {
+        font-size:100px;
+    }
+}

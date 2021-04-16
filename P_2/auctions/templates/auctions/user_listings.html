@@ -1,0 +1,52 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+  {% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class=>
+     <div {% if message.tags == 'error' %} class="alert alert-danger" {% else %} class="alert alert-primary" {% endif %} role="alert">{{ message }}</div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+    {% if user_listings%}
+    <h2><b>Your listings</b></h2><br>
+    {% for listing in user_listings %}
+            <div class = "container-fluid" id = "listing-row">
+                <div class = "row">
+                    <div class="col-sm" id = "listing-image">
+                        {% if listing.image %}
+                            <a href = "{% url "listing" listing.id %}">
+                                <img src = "{{listing.image.url}}" style = "height:200px; width:auto;">
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-7" id = "listing-text">
+                        <h3><b><a href = "{% url "listing" listing.id %}"> {{listing.title}} </a></b></h3>
+                        <p><b>Starting bid: </b>${{listing.start_bid}}</p>
+                        <p>{{listing.description}} <br>
+                        <i>Created: {{listing.pub_date}}</i></p>
+                        <form method = "post" action = "{% url 'user_listings'%}">
+                        {% csrf_token %}
+                        {% if listing.active %}
+                        <!--If the current user is the owner and the listing is active, show the close auction button-->
+                        <button type = "submit" value = {{listing.id}} name = "listing_delete" class = "btn btn-danger btn-sm" id = "top-buttons">Close auction</button>
+                        {% else %}
+                        <button type = "submit" value = {{listing.id}} name = "listing_open" class = "btn btn-primary btn-sm" id = "top-buttons">Open auction</button>
+                        {% endif %}
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+            <br>
+            
+    {% endfor %}
+    </ul>
+    {% else %}
+    <h3><b> You have not made any listings </b> </h3>
+    {% endif %}
+{% endblock %}
