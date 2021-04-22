@@ -1,0 +1,12 @@
+{% extends 'flights/base.html' %}
+
+{% block content %}
+    <h1> Welcome, {{request.user.first_name}} </h1>
+    <ul>
+        <li>Username: {{request.user.username}}</li>
+        <li>Name: {{request.user.first_name}} {{request.user.last_name}}</li>
+        <li>Email: {{request.user.email}}</li>
+    </ul>
+
+    <a href = {% url "logout_view" %}> Logout </a>
+{% endblock %}

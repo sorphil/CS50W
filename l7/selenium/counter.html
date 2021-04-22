@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Counter
+        </title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+               
+                // Use buttons to toggle between views
+                document.querySelector('#increase').addEventListener('click', () => increase());
+                document.querySelector('#decrease').addEventListener('click', () => decrease());
+            })
+            
+            let counter = 0;
+            function increase()
+            {
+                counter++;
+                document.querySelector("h1").innerHTML = counter;
+            }
+            function decrease()
+            {
+                counter++;
+                document.querySelector("h1").innerHTML = counter;
+            }
+            
+        </script>
+    </head>
+    <body>
+        <h1>0</h1>
+        <button id = "increase">+</button>
+        <button id = "decrease">-</button>
+    </body>
+</html>

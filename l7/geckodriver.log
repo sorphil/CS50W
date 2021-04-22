@@ -1,0 +1,2 @@
+1619101344254	geckodriver	INFO	Listening on 127.0.0.1:64637
+1619101347312	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Firefox Developer Edition\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\phili\\AppData\\Local\\Temp\\rust_mozprofilepnFNwh"
