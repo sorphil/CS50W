@@ -1,0 +1,82 @@
+.body
+{
+    padding:20px;
+    margin:10px;
+}
+
+.post
+{
+    padding:20px;
+}
+
+.liked::before {
+    cursor: pointer;
+    content: '\2665';
+    font-size: larger;
+    animation-name: load;
+    animation-duration:0.5s;
+    animation-fill-mode: forwards;
+}
+
+
+.editbtn {
+    background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.post
+{
+    animation-name: load;
+    animation-duration:0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes load {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+#postformdiv
+{
+    height: 0px;
+    animation-name: formload;
+    animation-duration: 0.5s;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-direction:normal;
+}
+
+@keyframes formload {
+    from{
+        height:0px
+    }
+    to{
+        height:300px;
+    }
+}
+
+#postform
+{
+    animation-name: formload;
+    animation-duration: 0.5s;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+}
+
+#closeform
+{
+    position: relative;
+    z-index: 99;
+    float: right;
+}

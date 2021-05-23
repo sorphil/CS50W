@@ -5,7 +5,6 @@ from django import forms
 
 class AuctionForm(forms.ModelForm):
 
-    
     class Meta:
         model = AuctionListing
         fields = [
